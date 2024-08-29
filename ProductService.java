@@ -16,7 +16,7 @@ public class ProductService{
     }
 
     //return type is product so must return something,maybe empty object
-    public Product getProduct(String name) {
+    public Product getProductByName(String name) {
         for (Product elem : prodlist) {
             if(elem.getName().equals(name)){
                 return elem;
@@ -24,4 +24,19 @@ public class ProductService{
         }
         return null;
     }
+
+    public List<Product> getProductByColour(String color) {
+        List<Product> colourprod=new ArrayList<>();
+        for (Product elem : prodlist) {
+            if (elem.getColour().equals(color))
+            {
+                 colourprod.add(elem);
+            }
+        }
+        return colourprod;
+    }
+
+
+    
+    
 }
