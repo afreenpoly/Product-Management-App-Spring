@@ -37,6 +37,19 @@ public class ProductService{
     }
 
 
+    public List<Product> getProductLessThan(int i) {
+        List<Product> prod = new ArrayList<>();
+        for (Product elem : prodlist) {
+            if (elem.getPrice() <= i) { 
+                prod.add(elem);
+            }
+        }
+        return prod;
+    }
+
+
+
+
     
     
 }

@@ -27,11 +27,19 @@ public class Main{
         System.out.println(" ");
 
         System.out.println("Get Product by Colour");
-        System.out.println(service.getProductByColour("black"));
+        List<Product> prod1 = service.getProductByColour("black");
+        for (Product p : prod1) {
+            System.out.println(p);
+        }
         System.out.println(" ");
 
-        // System.out.println("Get Product Less than 15k");
-        // System.out.println(service.getProductLessThan(15000));
+
+        System.out.println("Get Product Less than 15k");
+        List<Product> prod2 = service.getProductLessThan(15000);
+        for (Product p : prod2) {
+            System.out.println(p);
+        }
+        System.out.println(" ");
 
 
 
