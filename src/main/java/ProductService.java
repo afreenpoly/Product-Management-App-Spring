@@ -4,10 +4,12 @@ import java.util.List;
 public class ProductService{
     //initialize an array of products
     List<Product> prodlist=new ArrayList<>();
+    ProductDB db=new ProductDB();
 
     //method to add products,which adds product to array
     public void addProduct(Product p) {
-        prodlist.add(p);
+        // prodlist.add(p);
+        db.save(p);
     }
 
 
