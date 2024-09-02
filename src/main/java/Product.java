@@ -13,6 +13,11 @@ public class Product {
     }
 
 
+    public Product() {
+        //TODO Auto-generated constructor stub
+    }
+
+
     public String getName() {
         return name;
     }
@@ -36,5 +41,25 @@ public class Product {
     @Override
     public String toString() {
         return "Products{name=" + name + ", type=" + type + ", colour=" + colour + ", price=" + price + "}";
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

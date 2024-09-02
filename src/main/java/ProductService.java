@@ -14,7 +14,8 @@ public class ProductService{
 
 
     public List<Product> getAllProducts() {
-        return prodlist;
+        // return prodlist;
+        return db.getAll();
     }
 
     //return type is product so must return something,maybe empty object

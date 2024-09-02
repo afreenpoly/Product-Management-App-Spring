@@ -1,7 +1,10 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDB {
 
@@ -34,6 +37,27 @@ public class ProductDB {
         } catch (SQLException ex) {
         }
 
+    }
+
+    public List<Product> getAll() {
+        List<Product> products =new ArrayList<>();
+        String query = "select name,type,color,price from products";
+        try {
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                // Use the parameterized constructor
+                Product p = new Product(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4)
+                );
+                products.add(p);
+            }
+        } catch (SQLException ex) {
+        }
+        return products;
     }
 
 }
