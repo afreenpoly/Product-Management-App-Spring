@@ -1,3 +1,5 @@
+package com.afreen.ProjectSpring;
+
 public class Product {
     private String name;
     private String type;
