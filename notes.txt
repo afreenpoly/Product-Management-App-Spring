@@ -36,3 +36,4 @@ Here, findAll() retrieves all records from the Product table without writing any
 Behind the Scenes: While you don't write SQL queries, Spring Data JPA generates them dynamically based on method names and annotations. This approach streamlines database interactions and reduces the amount of boilerplate code.
 
 
+application.properties in resources folder should be updated for db connection
