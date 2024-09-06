@@ -1,9 +1,26 @@
 package com.afreen.ProjectSpring;
 
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "products")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
     private String name;
     private String type;
+
+    @Column(name = "color")
     private String colour;
+    
     private int price;
 
 
@@ -17,6 +34,10 @@ public class Product {
 
     public Product() {
         //TODO Auto-generated constructor stub
+    }
+
+    public int getId() {
+        return id;
     }
 
 
@@ -45,6 +66,9 @@ public class Product {
         return "Products{name=" + name + ", type=" + type + ", colour=" + colour + ", price=" + price + "}";
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setName(String name) {
         this.name = name;

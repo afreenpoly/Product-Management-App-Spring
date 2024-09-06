@@ -37,3 +37,36 @@ Behind the Scenes: While you don't write SQL queries, Spring Data JPA generates 
 
 
 application.properties in resources folder should be updated for db connection
+
+Error creating bean with name 'productDB' defined in com.afreen.ProjectSpring.ProductDB defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar
+Repository Annotation:
+
+When working with a database in Spring, the class that interacts with the database should be annotated as a repository. This helps Spring to identify it as a component responsible for data access.
+Example: Annotate the class ProductDB with @Repository to indicate that it is a repository component.
+Component vs. Repository:
+
+Although both @Component and @Repository can be used to register a class as a Spring Bean, @Repository is specifically used for classes that access the database. This distinction can help with exception translation and other data access concerns.
+Dependency Injection with @Autowired:
+
+Simply marking a class with @Repository or @Component does not automatically make Spring inject it wherever needed. To inject this dependency into another class (e.g., ProductService), you need to use the @Autowired annotation.
+The @Autowired annotation tells Spring that you want an instance of the repository (e.g., ProductDB) injected into your service class.
+
+Main Application Class (ProjectSpringApplication):
+Change: Modified the main method to use Spring’s ApplicationContext to get the ProductService bean.
+Reason: This ensures that Spring’s dependency injection is properly applied, allowing the ProductDB instance to be injected into ProductService.
+ApplicationContext context = SpringApplication.run(ProjectSpringApplication.class, args);
+ProductService service = context.getBean(ProductService.class);
+
+
+Product Entity Class (Product):
+Change: Added the @Table(name = "products") annotation to specify the correct table name.
+Reason: The default table name derived from the entity class name (product) did not match the actual table name in the database (products).
+@Entity
+@Table(name = "products")
+public class Product 
+Table name in PostgreDB was products but my class name in spring was product, so mismatch
+
+Change: Added the @Column(name = "color") annotation to map the colour field to the correct column name in the database.
+Reason: The column name in the database was color, not colour, causing a mismatch.
+@Column(name = "color")
+private String colour;
